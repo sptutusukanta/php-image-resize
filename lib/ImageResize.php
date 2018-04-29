@@ -82,7 +82,7 @@ class ImageResize
      * Apply filters.
      *
      * @param $image resource an image resource identifier
-     * @param $filterType filter type and default value is IMG_FILTER_NEGATE
+     * @param int $filterType filter type and default value is IMG_FILTER_NEGATE
      */
     protected function applyFilter($image, $filterType = IMG_FILTER_NEGATE)
     {
@@ -206,6 +206,7 @@ class ImageResize
      * @param integer $quality
      * @param integer $permissions
      * @return \static
+     * @throws ImageResizeException
      */
     public function save($filename, $image_type = null, $quality = null, $permissions = null)
     {
@@ -321,6 +322,7 @@ class ImageResize
      * @param int $image_type
      * @param int $quality
      * @return string
+     * @throws ImageResizeException
      */
     public function getImageAsString($image_type = null, $quality = null)
     {
@@ -339,6 +341,7 @@ class ImageResize
      * Convert the image to string with the current settings
      *
      * @return string
+     * @throws ImageResizeException
      */
     public function __toString()
     {
@@ -349,6 +352,7 @@ class ImageResize
      * Outputs image to browser
      * @param string $image_type
      * @param integer $quality
+     * @throws ImageResizeException
      */
     public function output($image_type = null, $quality = null)
     {
@@ -572,8 +576,8 @@ class ImageResize
      *
      * @param integer $width
      * @param integer $height
-     * @param integer $x
-     * @param integer $y
+     * @param integer|false $x
+     * @param integer|false $y
      * @return \static
      */
     public function freecrop($width, $height, $x = false, $y = false)
